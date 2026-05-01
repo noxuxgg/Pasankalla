@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasanaku Bolivia - Detalle del Círculo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans" data-page="detail">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center p-4 bg-white border-b">
+        <div data-action="back" data-target="panel-control.html" class="flex items-center gap-2 text-emerald-600 font-bold">
+            <i class="fas fa-arrow-left"></i>
+            <span>Pasanaku Bolivia</span>
+        </div>
+        <div class="flex items-center gap-4 text-gray-500">
+            <i class="far fa-bell"></i>
+            <i class="far fa-question-circle"></i>
+            <div class="w-8 h-8 bg-gray-300 rounded-full overflow-hidden border">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Perfil de Ana">
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-6">
+        
+        <!-- Título y Banner Principal -->
+        <div class="flex flex-col md:flex-row justify-between gap-6 mb-8">
+            <div class="flex-1">
+                <h1 id="circle-title" class="text-2xl font-bold text-slate-800">Círculo de Renovación de Hogar</h1>
+                <p id="circle-meta" class="text-sm text-gray-500">Iniciado en Marzo 2024 • 10 Miembros • Aporte mensual</p>
+                
+                <div class="flex gap-4 mt-6">
+                    <div class="bg-white p-4 rounded-xl border flex-1">
+                        <p class="text-xs text-gray-400 uppercase font-semibold">Proximo aporte</p>
+                        <p id="next-payment-value" class="text-xl font-bold text-emerald-600">Bs 5.000,00</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border flex-1">
+                        <p class="text-xs text-gray-400 uppercase font-semibold">Mes actual</p>
+                        <p id="current-cycle-value" class="text-xl font-bold text-slate-700">4 de 10</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Pozo Total -->
+            <div class="bg-emerald-700 text-white p-6 rounded-2xl w-full md:w-72 text-center shadow-lg shadow-emerald-100">
+                <i class="fas fa-university text-2xl mb-2 opacity-80"></i>
+                <p class="text-xs uppercase tracking-wider opacity-90">Pozo comunitario</p>
+                <p id="pool-total-value" class="text-3xl font-bold my-1">Bs 50.000</p>
+                <span id="participation-rate" class="text-[10px] bg-emerald-800/50 px-2 py-1 rounded-full italic">83% Tasa de Participación</span>
+            </div>
+        </div>
+
+        <div class="bg-white border rounded-xl p-3 mb-6 flex flex-wrap justify-between items-center gap-2">
+            <p id="turn-order-info" class="text-xs text-slate-600">Orden por sorteo: Ana -> Maria -> Carlos -> ...</p>
+            <button id="simulate-delay-btn" class="text-xs bg-red-50 text-red-700 px-3 py-1.5 rounded-lg font-bold">Simular atraso de Carlos</button>
+        </div>
+
+        <!-- Línea de Tiempo de Meses -->
+        <div class="flex justify-between mb-10 overflow-x-auto pb-2 gap-2">
+            <!-- Meses Pasados -->
+            <div class="flex flex-col items-center min-w-[60px] opacity-40 text-xs">
+                <span>MAR</span>
+                <div class="w-10 h-12 border rounded-lg flex flex-col items-center justify-center bg-white">
+                    <i class="fas fa-check-circle text-emerald-500 mb-1"></i>
+                    <span>#1</span>
+                </div>
+            </div>
+            <!-- Mes Actual -->
+            <div class="flex flex-col items-center min-w-[70px] text-xs">
+                <span class="text-emerald-600 font-bold">JUN</span>
+                <div class="w-14 h-16 border-2 border-emerald-500 rounded-lg flex flex-col items-center justify-center bg-white shadow-md">
+                    <i class="far fa-calendar-check text-emerald-600 text-lg mb-1"></i>
+                    <span class="font-bold">#4</span>
+                    <span class="text-[9px] uppercase">Ahora</span>
+                </div>
+            </div>
+            <!-- Meses Futuros -->
+            <div class="flex flex-col items-center min-w-[60px] opacity-40 text-xs">
+                <span>JUL</span>
+                <div class="w-10 h-12 border rounded-lg flex flex-col items-center justify-center bg-white">
+                    <i class="far fa-clock mb-1"></i>
+                    <span>#5</span>
+                </div>
+            </div>
+            <!-- ... Repetir para más meses si es necesario -->
+        </div>
+
+        <!-- Secuencia de Turnos -->
+        <section>
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-bold text-lg">Secuencia de Turnos</h2>
+                <button id="filter-status-btn" class="text-xs text-gray-500"><i class="fas fa-sliders-h mr-1"></i> Filtrar Estado</button>
+            </div>
+
+            <div class="space-y-3">
+                <!-- Turno Actual (Verde) -->
+                <div data-turn-status="pending" class="bg-white border-2 border-emerald-500 rounded-xl p-4 flex justify-between items-center">
+                    <div class="flex items-center gap-4">
+                        <div id="turn-current-index" class="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold">4</div>
+                        <div>
+                            <p id="turn-current-name" class="font-bold text-sm">Elena Rodriguez</p>
+                            <p id="turn-current-score" class="text-[10px] text-gray-400">Puntaje de Confianza: 980</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span id="turn-current-badge" class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded">Recibiendo ahora</span>
+                        <p id="turn-current-date" class="text-[10px] text-gray-400 mt-1">Esperado: 30 de Junio</p>
+                    </div>
+                </div>
+
+                <!-- Próximo Turno (Azul) -->
+                <div data-turn-status="pending" class="bg-white border rounded-xl p-4 flex justify-between items-center opacity-80">
+                    <div class="flex items-center gap-4">
+                        <div id="turn-next-index" class="w-10 h-10 bg-slate-100 text-slate-500 rounded-full flex items-center justify-center font-bold border">5</div>
+                        <div>
+                            <p id="turn-next-name" class="font-bold text-sm text-slate-600">Marcus Chen</p>
+                            <p id="turn-next-score" class="text-[10px] text-gray-400">Puntaje de Confianza: 945</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span id="turn-next-badge" class="bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 rounded">Siguiente</span>
+                        <p id="turn-next-date" class="text-[10px] text-gray-400 mt-1">Programado: 30 de Julio</p>
+                    </div>
+                </div>
+
+                <!-- Turno con Retraso (Rojo) -->
+                <div id="late-turn-card" data-turn-status="late" class="bg-red-50 border border-red-200 rounded-xl p-4 flex justify-between items-center">
+                    <div class="flex items-center gap-4">
+                        <div id="turn-late-index" class="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center font-bold">6</div>
+                        <div>
+                            <p id="turn-late-name" class="font-bold text-sm">David Okoro</p>
+                            <p id="turn-late-score" class="text-[10px] text-red-400">Puntaje de Confianza: 410</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span id="turn-late-badge" class="bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded">Aporte atrasado</span>
+                        <p id="turn-late-date" class="text-[10px] text-red-500 mt-1 font-semibold">3 días de retraso</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Navbar Inferior -->
+    <nav class="fixed bottom-0 w-full bg-white border-t flex justify-around p-3 text-gray-400">
+        <div data-nav="panel-control.html" class="flex flex-col items-center gap-1 text-[10px]">
+            <i class="fas fa-th-large text-lg"></i>
+            <span>Inicio</span>
+        </div>
+        <div data-nav="detalle-circulo.html" class="flex flex-col items-center gap-1 text-[10px] text-emerald-600">
+            <i class="fas fa-redo-alt text-lg"></i>
+            <span class="font-bold">Círculos</span>
+        </div>
+        <div data-nav="crear-circulo.html" class="flex flex-col items-center gap-1 text-[10px]">
+            <i class="fas fa-plus-circle text-lg"></i>
+            <span>Crear</span>
+        </div>
+        <div data-nav="perfil-usuario.html" class="flex flex-col items-center gap-1 text-[10px]">
+            <i class="fas fa-user text-lg"></i>
+            <span>Perfil</span>
+        </div>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasanaku Bolivia - Perfil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans pb-24" data-page="profile">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center p-4 bg-white border-b">
+        <div data-action="back" data-target="panel-control.html" class="flex items-center gap-2 text-emerald-700 font-bold">
+            <i class="fas fa-arrow-left"></i>
+            <span>Pasanaku Bolivia</span>
+        </div>
+        <div class="flex items-center gap-4 text-slate-400">
+            <i class="far fa-bell"></i>
+            <i class="far fa-question-circle"></i>
+            <div class="w-8 h-8 bg-slate-200 rounded-full overflow-hidden">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Perfil de Ana">
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-4 lg:p-8">
+        
+        <!-- Sección de Usuario y Puntaje -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Info Personal -->
+            <div class="md:col-span-2 bg-white rounded-2xl border p-6 flex flex-col md:flex-row items-center gap-6">
+                <div class="relative">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-24 h-24 rounded-full border-4 border-emerald-500 p-1" alt="Profile">
+                    <div class="absolute bottom-0 right-0 bg-emerald-600 text-white p-1.5 rounded-full border-2 border-white text-[10px]">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+                <div class="text-center md:text-left">
+                    <h1 id="profile-name" class="text-2xl font-bold text-slate-700">Alex Thompson</h1>
+                    <p class="text-xs text-slate-400 mb-4 font-medium">Miembro desde agosto de 2022 • La Paz, Bolivia</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-2">
+                        <button id="edit-profile-btn" class="bg-emerald-700 text-white px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-2">
+                            <i class="fas fa-pen text-[10px]"></i> Editar Perfil
+                        </button>
+                        <button id="share-profile-btn" class="bg-white border text-slate-600 px-4 py-2 rounded-lg text-xs font-bold hover:bg-slate-50">
+                            Compartir Perfil de Confianza
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nivel de Confianza (Card Verde) -->
+            <div class="bg-emerald-800 text-white rounded-2xl p-6 text-center shadow-lg shadow-emerald-100 flex flex-col justify-center">
+                <p class="text-[10px] uppercase tracking-widest opacity-80 font-bold">Nivel de Confianza</p>
+                <div class="my-2">
+                    <span id="profile-trust-score" class="text-5xl font-black">98</span><span class="text-xl opacity-60">/100</span>
+                </div>
+                <p class="text-xs font-bold text-emerald-300 mb-2">+2 este mes</p>
+                <p class="text-[10px] opacity-90 leading-tight">Excelente confiabilidad en ciclos comunitarios.</p>
+            </div>
+        </div>
+
+        <!-- Cuerpo del Perfil -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Columna Izquierda: Desglose -->
+            <div class="space-y-6">
+                <div class="bg-white border rounded-2xl p-6">
+                    <h2 class="font-bold text-sm mb-6">Desglose de Confianza</h2>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-slate-500"><i class="far fa-clock mr-2"></i> Pagos a tiempo</span>
+                            <span class="font-bold text-emerald-600">100%</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs border-t pt-4">
+                            <span class="text-slate-500"><i class="fas fa-users mr-2"></i> Participación en juegos</span>
+                            <span class="font-bold text-amber-600">5/5</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs border-t pt-4">
+                            <span class="text-slate-500"><i class="fas fa-id-card mr-2"></i> Identidad Verificada</span>
+                            <i class="fas fa-check-circle text-emerald-500"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Tip Card -->
+                    <div class="mt-6 bg-blue-50 p-4 rounded-xl border border-blue-100 flex gap-3">
+                        <i class="far fa-lightbulb text-blue-500 text-sm mt-1"></i>
+                        <p class="text-[10px] text-blue-700 leading-relaxed font-medium">
+                            Tu puntaje alto te califica para el nivel "Circulo Plata" con 0% en comisiones de plataforma.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Métodos de Pago -->
+                <div class="bg-white border rounded-2xl p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="font-bold text-sm">Métodos de Pago</h2>
+                        <button id="add-method-btn" class="text-[10px] text-emerald-700 font-bold">+ Añadir Nuevo</button>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <i class="fab fa-cc-visa text-lg text-indigo-800"></i>
+                                <div>
+                                    <p class="text-[10px] font-bold">Visa Platinum **** 4242</p>
+                                    <p class="text-[9px] text-slate-400">Expira 12/26</p>
+                                </div>
+                            </div>
+                            <span class="text-[8px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded font-bold">PRINCIPAL</span>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex items-center gap-3">
+                            <i class="fab fa-cc-mastercard text-lg text-orange-600"></i>
+                            <div>
+                                <p class="text-[10px] font-bold text-slate-500">Mastercard Débito **** 8801</p>
+                                <p class="text-[9px] text-slate-400">Expira 09/25</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Historial y Ajustes -->
+            <div class="md:col-span-2 space-y-6">
+                <!-- Pasanakus Pasados -->
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="font-bold text-sm">Pasanakus pasados</h2>
+                        <button class="text-[10px] text-slate-400">Ver todos ></button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Card Historial 1 -->
+                        <div class="bg-white border rounded-2xl p-4 shadow-sm">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="w-8 h-8 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center text-xs">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <span class="text-[8px] bg-slate-100 text-slate-500 px-2 py-1 rounded-full flex items-center gap-1">
+                                    <i class="fas fa-check-circle text-emerald-500 text-[6px]"></i> Completado
+                                </span>
+                            </div>
+                            <h3 class="text-xs font-bold mb-1">Ahorro de fin de ano 2023</h3>
+                            <p class="text-[9px] text-slate-400 mb-4">Finalizado 15 dic, 2023</p>
+                            <div class="flex justify-between items-end border-t pt-2">
+                                <span class="text-[9px] text-slate-400 uppercase font-bold">Pozo Total</span>
+                                <span class="text-xs font-bold text-slate-700">Bs 1.200,00</span>
+                            </div>
+                        </div>
+                        <!-- Card Historial 2 -->
+                        <div class="bg-white border rounded-2xl p-4 shadow-sm">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="w-8 h-8 bg-purple-50 text-purple-600 rounded-lg flex items-center justify-center text-xs">
+                                    <i class="fas fa-laptop"></i>
+                                </div>
+                                <span class="text-[8px] bg-slate-100 text-slate-500 px-2 py-1 rounded-full flex items-center gap-1">
+                                    <i class="fas fa-check-circle text-emerald-500 text-[6px]"></i> Completado
+                                </span>
+                            </div>
+                            <h3 class="text-xs font-bold mb-1">Ciclo Mejora Tech</h3>
+                            <p class="text-[9px] text-slate-400 mb-4">Finalizado 02 oct, 2023</p>
+                            <div class="flex justify-between items-end border-t pt-2">
+                                <span class="text-[9px] text-slate-400 uppercase font-bold">Pozo Total</span>
+                                <span class="text-xs font-bold text-slate-700">Bs 850,00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ajustes de Cuenta -->
+                <div class="bg-white border rounded-2xl p-6">
+                    <h2 class="font-bold text-sm mb-4">Ajustes de Cuenta</h2>
+                    <div class="space-y-1">
+                        <div data-setting="notifications" class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-xl cursor-pointer transition">
+                            <div class="flex items-center gap-4">
+                                <i class="far fa-bell text-slate-400"></i>
+                                <div>
+                                    <p class="text-xs font-bold">Preferencias de Notificaciones</p>
+                                    <p class="text-[9px] text-slate-400">Gestiona alertas push y de correo</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-right text-slate-300 text-xs"></i>
+                        </div>
+                        <div data-setting="security" class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-xl cursor-pointer transition">
+                            <div class="flex items-center gap-4">
+                                <i class="fas fa-lock text-slate-400"></i>
+                                <div>
+                                    <p class="text-xs font-bold">Seguridad y Privacidad</p>
+                                    <p class="text-[9px] text-slate-400">Contraseña, 2FA y sesiones</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-right text-slate-300 text-xs"></i>
+                        </div>
+                        <div data-setting="support" class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-xl cursor-pointer transition">
+                            <div class="flex items-center gap-4">
+                                <i class="fas fa-headset text-slate-400"></i>
+                                <div>
+                                    <p class="text-xs font-bold">Soporte y Centro de Ayuda</p>
+                                    <p class="text-[9px] text-slate-400">Contacta con el soporte de PASANAKU</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-right text-slate-300 text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Navbar Inferior -->
+    <nav class="fixed bottom-0 w-full bg-white border-t flex justify-around p-3 text-slate-400 z-10">
+        <div data-nav="panel-control.html" class="flex flex-col items-center gap-1 text-[10px]">
+            <i class="fas fa-th-large text-lg"></i>
+            <span>Inicio</span>
+        </div>
+        <div data-nav="detalle-circulo.html" class="flex flex-col items-center gap-1 text-[10px]">
+            <i class="fas fa-redo-alt text-lg"></i>
+            <span>Círculos</span>
+        </div>
+        <div data-nav="crear-circulo.html" class="flex flex-col items-center gap-1 text-[10px]">
+            <i class="fas fa-plus-circle text-lg"></i>
+            <span>Crear</span>
+        </div>
+        <div data-nav="perfil-usuario.html" class="flex flex-col items-center gap-1 text-[10px] text-emerald-700 font-bold">
+            <i class="fas fa-user text-lg"></i>
+            <span>Perfil</span>
+        </div>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasanaku Bolivia - Panel Principal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans pb-24" data-page="panel">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center p-4 bg-white border-b sticky top-0 z-10">
+        <div class="text-emerald-700 font-bold text-lg tracking-tight">Pasanaku Bolivia</div>
+        <div class="flex items-center gap-4 text-slate-400">
+            <i class="far fa-bell"></i>
+            <i class="far fa-question-circle"></i>
+            <div class="w-8 h-8 bg-slate-200 rounded-full overflow-hidden border">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Perfil de Ana">
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto p-4 md:p-8">
+        
+        <!-- Bienvenida y Nivel de Fiabilidad -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
+            <div>
+                <p id="welcome-user" class="text-emerald-700 font-semibold text-xs mb-1">Bienvenido de nuevo, Mateo</p>
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-800 leading-tight">
+                    Construyendo riqueza<br>juntos.
+                </h1>
+            </div>
+            
+            <!-- Widget de Fiabilidad -->
+            <div class="bg-white p-4 rounded-2xl border shadow-sm flex items-center gap-4 w-full md:w-auto">
+                <div class="relative w-16 h-16 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90">
+                        <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" fill="transparent" class="text-slate-100" />
+                        <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" fill="transparent" stroke-dasharray="175" stroke-dashoffset="10" class="text-emerald-600" />
+                    </svg>
+                    <span id="trust-score" class="absolute text-lg font-bold text-slate-700">98</span>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase">Nivel de Fiabilidad</p>
+                    <p class="text-[10px] text-emerald-600 font-bold">Excelente nivel de confianza</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="bg-white border rounded-2xl p-4 mb-8">
+            <div class="flex flex-wrap justify-between items-center gap-3">
+                <div>
+                    <p class="text-xs font-bold text-slate-700">Simulador Caso Ana y Amigos</p>
+                    <p id="simulation-status" class="text-[11px] text-slate-500">Mes 1 de 10 • Pozo 5,000 • Sin atrasos</p>
+                </div>
+                <div class="flex gap-2">
+                    <button id="advance-month-btn" class="bg-emerald-700 text-white px-3 py-2 rounded-lg text-xs font-bold">Avanzar mes</button>
+                    <button id="reset-demo-btn" class="bg-slate-100 text-slate-700 px-3 py-2 rounded-lg text-xs font-bold">Reiniciar demo</button>
+                </div>
+            </div>
+            <p id="simulation-log" class="text-[11px] text-slate-500 mt-3">Ana recibe en el mes 1 y compra su laptop.</p>
+        </section>
+
+        <!-- Botón Iniciar Nuevo Pasanaku -->
+        <button id="create-circle-btn" class="w-full bg-emerald-900 text-white p-4 rounded-xl flex justify-between items-center mb-8 hover:bg-emerald-950 transition">
+            <div class="flex items-center gap-3 font-semibold text-sm">
+                <i class="fas fa-plus-circle"></i>
+                <span>Iniciar nuevo pasanaku</span>
+            </div>
+            <i class="fas fa-arrow-right text-xs"></i>
+        </button>
+
+        <!-- Banner de Pago Pendiente -->
+        <div class="mb-8">
+            <h2 class="text-xs font-bold text-slate-400 uppercase mb-3">Próximo aporte pendiente</h2>
+            <div class="bg-emerald-700 rounded-2xl p-4 flex flex-col md:flex-row justify-between items-center gap-4 shadow-lg shadow-emerald-100">
+                <div class="flex items-center gap-4 w-full md:w-auto">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-10 h-10 rounded-full border-2 border-emerald-500" alt="Socia del turno">
+                    <div class="text-white">
+                        <p id="pending-recipient" class="text-xs font-bold">Aportar a la rueda del mes</p>
+                        <p id="pending-details" class="text-[10px] opacity-80">Vence en 2 días • Family Pot</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between md:justify-end gap-8 w-full md:w-auto border-t md:border-t-0 pt-3 md:pt-0 border-emerald-600">
+                    <div class="text-white text-right">
+                        <p id="pending-amount" class="text-lg font-bold">Bs 200.00</p>
+                        <p class="text-[8px] uppercase tracking-widest opacity-70">Monto</p>
+                    </div>
+                    <button id="pay-now-btn" class="bg-white text-emerald-800 px-6 py-2 rounded-lg text-xs font-bold shadow-md">
+                        Registrar aporte
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Círculos Activos -->
+        <div class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xs font-bold text-slate-400 uppercase">Círculos Activos</h2>
+                <button class="text-xs text-emerald-700 font-bold">Ver Todo</button>
+            </div>
+            <div id="active-circles-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Card 1 -->
+                <div class="bg-white border rounded-2xl p-5 shadow-sm">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-cookie-bite"></i>
+                        </div>
+                        <span class="text-[9px] font-bold text-blue-500 bg-blue-50 px-2 py-1 rounded-md uppercase">Activo</span>
+                    </div>
+                    <h3 class="font-bold text-slate-700">Friday Friends</h3>
+                    <p class="text-[10px] text-slate-400 mb-6">Rotación semanal • 8 miembros</p>
+                    
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-[9px] font-bold uppercase">
+                            <span class="text-slate-400">Ronda 4 de 8</span>
+                            <span class="text-emerald-600">50% Completado</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-emerald-600 h-full w-1/2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white border rounded-2xl p-5 shadow-sm">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span class="text-[9px] font-bold text-indigo-500 bg-indigo-50 px-2 py-1 rounded-md uppercase">Tu turno pronto</span>
+                    </div>
+                    <h3 class="font-bold text-slate-700">Family Pot</h3>
+                    <p class="text-[10px] text-slate-400 mb-6">Ahorro mensual • 12 miembros</p>
+                    <div class="flex -space-x-2">
+                        <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-6 h-6 rounded-full border-2 border-white" alt="Integrante 1">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-6 h-6 rounded-full border-2 border-white" alt="Integrante 2">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" class="w-6 h-6 rounded-full border-2 border-white" alt="Integrante 3">
+                        <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-[8px] font-bold text-slate-400">+9</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estadísticas Rápidas -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white border rounded-2xl p-4">
+                <p class="text-[9px] font-bold text-slate-400 uppercase mb-1">Ahorrado</p>
+                <p id="stat-saved" class="text-lg font-bold text-slate-700">Bs 1,450</p>
+            </div>
+            <div class="bg-white border rounded-2xl p-4">
+                <p class="text-[9px] font-bold text-slate-400 uppercase mb-1">Pagado</p>
+                <p id="stat-paid" class="text-lg font-bold text-slate-700">Bs 3,200</p>
+            </div>
+            <div class="bg-white border rounded-2xl p-4">
+                <p class="text-[9px] font-bold text-slate-400 uppercase mb-1">Rango</p>
+                <p class="text-lg font-bold text-emerald-600">Top 2%</p>
+            </div>
+            <div class="bg-white border rounded-2xl p-4">
+                <p class="text-[9px] font-bold text-slate-400 uppercase mb-1">Ciclos</p>
+                <p id="stat-cycles" class="text-lg font-bold text-slate-700">14</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Navbar Inferior -->
+    <nav class="fixed bottom-0 w-full bg-white border-t flex justify-around p-3 text-slate-400 z-10">
+        <div data-nav="panel-control.html" class="flex flex-col items-center gap-1 text-[10px] text-emerald-700 font-bold">
+            <i class="fas fa-th-large text-lg"></i>
+            <span>Inicio</span>
+        </div>
+        <div data-nav="detalle-circulo.html" class="flex flex-col items-center gap-1 text-[10px]">
+            <i class="fas fa-redo-alt text-lg"></i>
+            <span>Círculos</span>
+        </div>
+        <div data-nav="crear-circulo.html" class="flex flex-col items-center gap-1 text-[10px]">
+            <i class="fas fa-plus-circle text-lg"></i>
+            <span>Crear</span>
+        </div>
+        <div data-nav="perfil-usuario.html" class="flex flex-col items-center gap-1 text-[10px]">
+            <i class="fas fa-user text-lg"></i>
+            <span>Perfil</span>
+        </div>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>
