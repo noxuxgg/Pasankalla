@@ -10,3 +10,6 @@ git clone https://github.com/noxuxgg/Pasankalla
 ```
 ## Paso Nº4
 Dirigirse al archivo 'index.html' y hacer clic derecho -> 'Open with Live Server'
+
+# URL
+https://noxuxgg.github.io/Pasankalla/panel-control.html
